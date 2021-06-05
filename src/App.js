@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Imageselection from './Imageselection'
+class App extends React.Component{
+  constructor(props){
+    super(props)
+    this.state={
+      number:0
+    }
+    this.handleClick = this.handleClick.bind(this)
+  }
+  handleClick(){
+    this.setState({number:Math.floor(Math.random()*6+1)})
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  render(){
+    return(
+      <div style={{textAlign:"center", padding:"50px"}}>
+      <div><button type="button" onClick={this.handleClick}>Roll</button></div>
+      <Imageselection value={this.state.number}/>
+      </div>
+    )
+  }
+
 }
 
 export default App;
